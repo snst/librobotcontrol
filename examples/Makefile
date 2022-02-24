@@ -13,8 +13,8 @@ INCLUDES	:= $(shell find $(INCLUDEDIR) -name '*.h')
 SOURCES		:= $(shell find $(SRCDIR) -type f -name *.c)
 
 # compiler and linker programs
-CC		:= gcc
-LINKER		:= gcc
+CC		:= ${CROSS_COMPILE}gcc
+LINKER		:= ${CROSS_COMPILE}gcc
 
 # compile flags
 WFLAGS		:= -Wall -Wextra -Werror=float-equal -Wuninitialized \

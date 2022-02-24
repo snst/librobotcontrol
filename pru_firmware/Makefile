@@ -24,9 +24,9 @@ INSTALLDIR	:= install -d -m 755
 INSTALLNONEXEC	:= install -m 644
 
 
-PRU_CGT		:= /usr/share/ti/cgt-pru
-LNKPRU		:= /usr/bin/lnkpru
-CLPRU		:= /usr/bin/clpru
+PRU_CGT		:= $(PRU_PATH)
+LNKPRU		:= $(PRU_PATH)/bin/lnkpru
+CLPRU		:= $(PRU_PATH)/bin/clpru
 
 # if the pru-software-support-package is installed to /opt/ use that
 # otherwise look in /usr/lib/ti/ which is where the BBB images puts it
@@ -36,9 +36,9 @@ INCLUDE=--include_path=/opt/source/pru-software-support-package/include \
 --include_path=/opt/source/pru-software-support-package/include/am335x \
 --include_path=$(PRU_CGT)/include
 else
-LIBS=--library=/usr/lib/ti/pru-software-support-package/lib/rpmsg_lib.lib
-INCLUDE=--include_path=/usr/lib/ti/pru-software-support-package/include \
---include_path=/usr/lib/ti/pru-software-support-package/include/am335x \
+LIBS=--library=$(PRU_PATH)/usr/lib/rpmsg_lib.lib
+INCLUDE=--include_path=$(PRU_PATH)/usr/include \
+--include_path=$(PRU_PATH)/usr/include/am335x \
 --include_path=$(PRU_CGT)/include
 endif
 

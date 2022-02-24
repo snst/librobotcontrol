@@ -10,13 +10,14 @@ all:
 	@make -C examples --no-print-directory
 	@make -C services/rc_battery_monitor --no-print-directory
 	@make -C services/robotcontrol --no-print-directory
+	@make -C pru_firmware --no-print-directory PRU_PATH=${PRU_PATH}
 
 install:
 	@$(INSTALLDIR) $(DESTDIR)$(prefix)/share/robotcontrol
 	@cp -r -f  rc_project_template $(DESTDIR)$(prefix)/share/robotcontrol/
 	@$(INSTALLDIR) $(DESTDIR)$(prefix)/bin
 	@$(INSTALL) device_tree/configure_robotics_dt.sh $(DESTDIR)$(prefix)/bin/configure_robotics_dt
-	@make -C pru_firmware -s install
+	@make -C pru_firmware -s install PRU_PATH=${PRU_PATH}
 	@make -C library -s install
 	@make -C examples -s install
 	@make -C services/rc_battery_monitor -s install
@@ -30,6 +31,7 @@ clean:
 	@make -C services/rc_battery_monitor -s clean
 	@make -C services/robotcontrol -s clean
 	@make -C rc_project_template -s clean
+	@make -C pru_firmware -s clean PRU_PATH=${PRU_PATH}
 	@$(RM) debian/librobotcontrol
 	@$(RM) debian/librobotcontrol.postrm.debhelper
 	@$(RM) debian/librobotcontrol.substvars

@@ -14,8 +14,8 @@ INCLUDES	:= $(shell find $(INCLUDEDIR) -name '*.h')
 SOURCES		:= $(shell find $(SRCDIR) -name '*.c')
 
 # compiler and linker binaries
-CC		:= gcc
-LINKER		:= gcc
+CC		:= ${CROSS_COMPILE}gcc
+LINKER		:= ${CROSS_COMPILE}gcc
 
 # compiler and linker flags
 WFLAGS		:= -Wall -Wextra -Werror=float-equal -Wuninitialized -Wunused-variable -Wdouble-promotion

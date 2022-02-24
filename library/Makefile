@@ -15,8 +15,8 @@ OBJECTS		:= $(SOURCES:$(SRCDIR)/%.c=$(BUILDDIR)/%.o)
 INCLUDES	:= $(shell find $(INCLUDEDIR) -name '*.h')
 
 # compiler and linker binaries
-CC		:= gcc
-LINKER		:= gcc
+CC		:= ${CROSS_COMPILE}gcc
+LINKER		:= ${CROSS_COMPILE}gcc
 
 # general compiler flags
 WFLAGS		:= -Wall -Wextra -Werror=float-equal -Wuninitialized \
